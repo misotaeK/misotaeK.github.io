@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -38 250 290">
+  <!-- myArt+ mascot. Proportions traced from the owner's reference sketch. -->
+  <defs>
+    <pattern id="s" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-20)">
+      <rect width="12" height="12" fill="#ff8fc0"/>
+      <rect width="12" height="5" fill="#ec008c"/>
+    </pattern>
+  </defs>
+  <style>
+    /* ears pivot at their base (user-space coords); the rest pivot on their own centre */
+    .el { transform-origin: 45px 72px; animation: twitch-l 5s ease-in-out infinite; }
+    .er { transform-origin: 188px 72px; animation: twitch-r 5s ease-in-out infinite; }
+    .eye, .plus, .nose, .marks { transform-box: fill-box; transform-origin: center; }
+    .eye { animation: blink 4.2s infinite; }
+    .plus { animation: spin 6s cubic-bezier(.3, 1.5, .5, 1) infinite; }
+    .nose { animation: sniff 2.4s ease-in-out infinite; }
+    .teeth { transform-box: fill-box; transform-origin: top center; animation: chatter 6s infinite; }
+    .marks { animation: marks 7s ease-in-out infinite; }
+    .ring { animation: glint 5s infinite; }
+    /* ears only lean inward: leaning outward would push them past the head's shoulders */
+    @keyframes twitch-l { 0%, 55%, 100% { transform: rotate(0); } 60% { transform: rotate(9deg); } 66% { transform: rotate(2deg); } 72% { transform: rotate(6deg); } 80% { transform: rotate(0); } }
+    @keyframes twitch-r { 0%, 20%, 100% { transform: rotate(0); } 25% { transform: rotate(-8deg); } 31% { transform: rotate(-2deg); } 37%, 62% { transform: rotate(-11deg); } 70% { transform: rotate(0); } }
+    @keyframes blink { 0%, 44%, 50%, 90%, 96%, 100% { transform: scaleY(1); } 47%, 93% { transform: scaleY(.08); } }
+    @keyframes spin { 0%, 60% { transform: rotate(0); } 75%, 100% { transform: rotate(180deg); } }
+    @keyframes sniff { 0%, 60%, 100% { transform: translateY(0) scale(1); } 68%, 84% { transform: translateY(-2px) scale(1.25); } 76%, 92% { transform: translateY(1px) scale(.9); } }
+    @keyframes chatter { 0%, 70%, 100% { transform: scaleY(1); } 74%, 82%, 90% { transform: scaleY(1.3); } 78%, 86%, 94% { transform: scaleY(.9); } }
+    @keyframes marks { 0%, 18%, 62%, 100% { transform: translateY(0); } 22%, 40% { transform: translateY(-5px); } }
+    @keyframes glint { 0%, 80%, 100% { fill: #e8eef2; } 86% { fill: #fff; } 90% { fill: #b9c6ce; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <!-- ears: fat upright ovals; their lower ends and the striped insets run down behind the head -->
+  <g class="el">
+    <ellipse cx="45" cy="29" rx="34" ry="62" transform="rotate(-4 45 29)" fill="#2b2b2b"/>
+    <ellipse cx="46" cy="40" rx="18" ry="55" transform="rotate(-4 45 29)" fill="url(#s)"/>
+    <!-- ear piercings -->
+    <g class="ring" fill="#e8eef2" stroke="#8fa0aa" stroke-width="1.5">
+      <rect x="-3" y="20" width="28" height="11" transform="rotate(-12 11 25)"/>
+      <rect x="-1" y="50" width="28" height="11" transform="rotate(-8 13 55)"/>
+    </g>
+  </g>
+  <g class="er">
+    <ellipse cx="188" cy="31" rx="33" ry="62" transform="rotate(3 188 31)" fill="#2b2b2b"/>
+    <ellipse cx="188" cy="40" rx="17.500" ry="55" transform="rotate(3 188 31)" fill="url(#s)"/>
+  </g>
+  <path d="M8 150C6 110 10 84 22 70c18-12 68-16 100-16 38 0 83 4 102 18 12 14 14 40 14 78 0 55-12 82-42 92-26 6-46 6-74 6s-48 0-74-6C18 232 8 205 8 150z" fill="#2b2b2b"/>
+  <path class="marks" d="M29 138l6-5 1 7zM42 130l6-4v7z" fill="#8a8a8a"/>
+  <circle class="eye" cx="55" cy="160.500" r="17.500" fill="#f1eebc"/>
+  <g class="eye">
+    <circle cx="189" cy="156.500" r="28" fill="#f1eebc"/>
+    <path class="plus" d="M151 156.500h76M189 118.500v76" stroke="#ec008c" stroke-width="12.500"/>
+  </g>
+  <path class="nose" d="M119 192h18l-9 8z" fill="#ec008c"/>
+  <path class="teeth" d="M109 205h34v20h-13v-10h-8v10h-13z" fill="#fff" stroke="#cfcfcf" stroke-linejoin="round"/>
+</svg>
