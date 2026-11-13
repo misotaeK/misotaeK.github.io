@@ -19,10 +19,15 @@
 </head>
 <body>
 <div id="loader" role="status" aria-label="Yükleniyor">
-  <div class="ld-in">
-    <div class="angel"><img class="wl" src="img/wing-left.webp" alt=""><img class="wr" src="img/wing-right.webp" alt=""><img class="halo" src="img/halo-ring.webp" alt=""><img class="heart" src="img/heart-only.webp" alt=""></div>
-    <p class="ld-t">yükleniyor</p>
-    <div class="ld-bar" aria-hidden="true"><i></i></div>
+  <span class="ld-s" style="left:9%;top:14%;--d:0s">✦</span><span class="ld-s" style="left:84%;top:10%;--d:-.7s;font-size:38px">♥</span><span class="ld-s" style="left:16%;top:78%;--d:-1.2s;font-size:34px">✿</span><span class="ld-s" style="left:88%;top:74%;--d:-.3s">✦</span><span class="ld-s" style="left:50%;top:6%;--d:-1.6s;font-size:22px">★</span><span class="ld-s" style="left:46%;top:90%;--d:-.9s;font-size:24px">✧</span>
+  <div class="ld-card">
+    <div class="tb"><i></i><i></i><i></i><span>miso's mind açılıyor</span></div>
+    <div class="ld-in">
+      <div class="angel"><img class="wl" src="img/wing-left.webp" alt=""><img class="wr" src="img/wing-right.webp" alt=""><img class="halo" src="img/halo-ring.webp" alt=""><img class="heart" src="img/heart-only.webp" alt=""></div>
+      <p class="ld-t" aria-hidden="true"><span style="--i:0">y</span><span style="--i:1">ü</span><span style="--i:2">k</span><span style="--i:3">l</span><span style="--i:4">e</span><span style="--i:5">n</span><span style="--i:6">i</span><span style="--i:7">y</span><span style="--i:8">o</span><span style="--i:9">r</span></p>
+      <div class="ld-bar" aria-hidden="true"><i></i></div>
+      <p class="ld-p" aria-hidden="true"><span id="ldn">0</span>%</p>
+    </div>
   </div>
 </div>
 <noscript><style>#loader{display:none}</style></noscript>
@@ -32,6 +37,7 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-heart" viewBox="0 0 100 90"><path fill="currentColor" d="M50 88C10 60 0 40 0 25 0 10 12 0 25 0c10 0 19 6 25 15C56 6 65 0 75 0c13 0 25 10 25 25 0 15-10 35-50 63Z"/></symbol>
   <symbol id="i-folder" viewBox="0 0 80 64"><path fill="#ff9fc8" stroke="#e8508f" stroke-width="2.5" d="M4 10c0-3 2-5 5-5h20l8 8h34c3 0 5 2 5 5v36c0 3-2 5-5 5H9c-3 0-5-2-5-5z"/><path fill="#ffc0dc" d="M4 22h72v34c0 3-2 5-5 5H9c-3 0-5-2-5-5z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 80 64"><rect x="5" y="9" width="70" height="48" rx="8" fill="#ff9fc8" stroke="#e8508f" stroke-width="2.5"/><path d="M8 14l32 25 32-25" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.82 1.19 3.08 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></symbol>
 </svg>
 
@@ -62,15 +68,33 @@
     <svg class="hrt" viewBox="0 0 100 90" style="left:92%;top:70%;width:20px;rotate:14deg" aria-hidden="true"><use href="#i-heart"/></svg>
     <svg class="hrt" viewBox="0 0 100 90" style="left:77%;top:40%;width:12px;rotate:6deg" aria-hidden="true"><use href="#i-heart"/></svg>
 
+    <div class="osbar" aria-hidden="true">
+      <span class="os-l"><b>♥ misoOS</b><i>Dosya</i><i>Düzen</i><i>Görünüm</i></span>
+      <span class="os-r"><i class="on"></i>çevrim içi
+        <svg viewBox="0 0 22 16" width="20" height="14"><path d="M1 12h3v3H1zM7 8h3v7H7zM13 4h3v11h-3zM19 0h3v15h-3z" fill="currentColor"/></svg>
+        <svg viewBox="0 0 30 14" width="26" height="12"><rect x="1" y="1" width="24" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="4" y="4" width="15" height="6" rx="1.5" fill="currentColor"/><rect x="26.5" y="4.5" width="3" height="5" rx="1.5" fill="currentColor"/></svg>
+      </span>
+    </div>
+
     <div class="folds">
       <a class="fold" href="#projeler" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-folder"/></svg><span>projeler</span></a>
       <a class="fold" href="#deneyim" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-folder"/></svg><span>deneyim</span></a>
       <a class="fold" href="#rozetler" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-folder"/></svg><span>rozetler</span></a>
+      <a class="fold" href="mailto:su_kiratli@hotmail.com" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-mail"/></svg><span>e-posta</span></a>
+      <a class="fold" href="https://github.com/misotaeK" target="_blank" rel="noopener" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><rect x="11" y="3" width="58" height="58" rx="16" fill="#ff9fc8" stroke="#e8508f" stroke-width="2.5"/><use href="#i-github" x="23" y="15" width="34" height="34" style="color:#fff"/></svg><span>github</span></a>
     </div>
 
     <div class="win">
       <div class="tb"><i></i><i></i><i></i><span>miso's mind</span><button class="tidy" type="button" aria-label="Harfleri yerine topla">toparla ↺</button></div>
       <div class="lines" id="lines" aria-hidden="true"></div>
+    </div>
+
+    <div class="about" data-drag>
+      <div class="tb"><i></i><i></i><i></i><span>hakkımda.txt</span></div>
+      <div class="ab">
+        <p><b>Merhaba, ben Çisel Su.</b> Doğu Akdeniz Üniversitesi Bilgi Teknolojileri son sınıf öğrencisiyim. ASP.NET MVC, PHP ve SQL ile uygulamalar geliştiriyor, sahada ağ altyapısı kuruyorum.</p>
+        <div class="links"><a class="btn" href="#projeler">Projelere bak</a><a class="btn alt" href="mailto:su_kiratli@hotmail.com">E-posta gönder</a></div>
+      </div>
     </div>
 
     <div class="mii" data-drag id="mii" role="img" aria-label="Çisel Su'nun Mii avatarı">
@@ -226,6 +250,7 @@
 
 <!-- ===== İletişim ===== -->
 <section id="iletisim" class="lime" aria-labelledby="h-iletisim">
+  <a class="env" href="mailto:su_kiratli@hotmail.com" aria-label="E-posta gönder"><svg viewBox="0 0 200 110" aria-hidden="true"><g class="ewl"><path d="M62 52C42 18 10 20 5 44c10 0 15 6 17 13 8-2 14 4 16 10 9-2 17 0 24 4Z" fill="#fff3dc" stroke="#e8508f" stroke-width="3.5" stroke-linejoin="round"/></g><g transform="translate(200 0) scale(-1 1)"><g class="ewl"><path d="M62 52C42 18 10 20 5 44c10 0 15 6 17 13 8-2 14 4 16 10 9-2 17 0 24 4Z" fill="#fff3dc" stroke="#e8508f" stroke-width="3.5" stroke-linejoin="round"/></g></g><rect x="58" y="28" width="84" height="58" rx="8" fill="#ffb3d6" stroke="#e8508f" stroke-width="3.5"/><path d="M60 33l40 30 40-30" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M100 78c-9-6-12-11-12-15 0-4 3-6 6-6 2 0 4 1 6 4 2-3 4-4 6-4 3 0 6 2 6 6 0 4-3 9-12 15Z" fill="#ff4f9a" stroke="#fff" stroke-width="2"/></svg></a>
   <div class="eyes" aria-hidden="true"><div class="eye"><u></u></div><div class="eye"><u></u></div></div>
   <h2 id="h-iletisim">Merhaba de</h2>
   <div class="contact">

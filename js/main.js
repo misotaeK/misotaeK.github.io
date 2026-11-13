@@ -27,10 +27,17 @@
   /* ---------- yükleme ekranı ---------- */
   const loader = $("#loader");
   if (loader) {
-    const t0 = performance.now();
-    const hide = () => setTimeout(() => { loader.classList.add("done"); setTimeout(() => loader.remove(), 700); },
-                                  Math.max(0, 1100 - (performance.now() - t0)));
-    document.readyState === "complete" ? hide() : addEventListener("load", hide, { once: true });
+    const t0 = performance.now(), num = $("#ldn"), MIN = 1500;
+    let loaded = document.readyState === "complete", shown = 0;
+    addEventListener("load", () => { loaded = true; }, { once: true });
+    (function tick() {
+      const goal = loaded ? 100 : 90, byTime = Math.min(100, (performance.now() - t0) / MIN * 100);
+      shown = Math.min(goal, Math.max(shown, byTime));
+      if (num) num.textContent = Math.round(shown);
+      loader.style.setProperty("--ld", (shown / 100).toFixed(3));
+      if (shown >= 100) { setTimeout(() => { loader.classList.add("done"); setTimeout(() => loader.remove(), 700); }, 250); return; }
+      setTimeout(tick, 40);
+    })();
   }
 
   /* ---------- kalp yağmuru ---------- */
@@ -184,6 +191,13 @@
     li.addEventListener("pointerenter", () => {
       if (!reduce) li.animate([{ rotate: "0deg" }, { rotate: "-5deg" }, { rotate: "4deg" }, { rotate: "0deg" }], { duration: 420 });
     });
+  });
+
+  /* ---------- başlıklar harf harf zıplasın ---------- */
+  if (!reduce) $$("h2").forEach(h => {
+    const text = h.textContent; let i = 0;
+    h.setAttribute("aria-label", text);
+    h.innerHTML = text.split(" ").map(w => `<span aria-hidden="true" style="white-space:nowrap">${[...w].map(ch => `<span class="ch" style="--i:${i++}">${ch}</span>`).join("")}</span>`).join(" ");
   });
 
   /* ---------- sayfa kaydırdıkça beliren bölümler ---------- */

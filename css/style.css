@@ -450,3 +450,92 @@ nav ul a{padding:6px 18px}
 .more p{font-family:Nunito,Archivo,sans-serif;font-weight:600;color:var(--cocoa)}
 .more small,.priv{font-family:Nunito,Archivo,sans-serif}
 @media(max-width:560px){.txt{padding:20px 18px}}
+
+
+/* ---------- 21. Başlık harfleri sırayla zıplar ---------- */
+.ch{display:inline-block}
+h2.in .ch{animation:chIn .7s var(--pop) backwards;animation-delay:calc(var(--i) * 45ms)}
+h2:hover .ch{animation:chHop .55s var(--pop);animation-delay:calc(var(--i) * 30ms)}
+@keyframes chIn{from{opacity:0;transform:translateY(.6em) rotate(-18deg) scale(.4)}}
+@keyframes chHop{40%{transform:translateY(-.22em) rotate(6deg)}}
+.hl2{animation:hlbob 4.5s ease-in-out infinite}
+.proj:nth-of-type(even) .hl2{animation-delay:-2.2s}
+@keyframes hlbob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.lead{background:linear-gradient(transparent 62%,#ffe08a 62% 92%,transparent 92%) no-repeat 0 0/0% 100%;display:inline;transition:background-size 1.1s var(--ease) .35s;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.info.in .lead{background-size:100% 100%}
+
+/* ---------- 22. Defter kağıdı kartlar: çizgiler ve delikler ---------- */
+.txt{
+  outline:0;padding-left:54px;
+  background:
+    radial-gradient(circle at 24px 22px,#ffe0ee 0 8px,transparent 8.6px) 0 0/100% 44px repeat-y,
+    repeating-linear-gradient(transparent 0 30px,rgba(255,159,200,.35) 30px 31.5px),
+    #fffdfb;
+  border-left:0;
+}
+@media(max-width:560px){.txt{padding-left:46px;background:radial-gradient(circle at 20px 22px,#ffe0ee 0 7px,transparent 7.6px) 0 0/100% 44px repeat-y,repeating-linear-gradient(transparent 0 30px,rgba(255,159,200,.35) 30px 31.5px),#fffdfb}}
+
+/* ---------- 23. Kanatlı zarf ---------- */
+.env{position:absolute;right:5%;top:-46px;width:clamp(110px,16vw,180px);z-index:3;display:block;animation:envf 3.2s ease-in-out infinite;filter:drop-shadow(0 8px 6px rgba(120,60,90,.25))}
+.env svg{display:block;width:100%;height:auto;overflow:visible}
+.ewl{transform-origin:62px 62px;animation:ewf .5s ease-in-out infinite alternate}
+.env:hover{animation-duration:1.2s}
+@keyframes envf{0%,100%{translate:0 0;rotate:-4deg}50%{translate:0 -12px;rotate:4deg}}
+@keyframes ewf{to{transform:rotate(-16deg) scaleY(.82)}}
+
+/* ---------- 24. Masaüstü: duvar kağıdı, üst çubuk, hakkımda penceresi ---------- */
+.desk{
+  grid-template-columns:auto minmax(0,1fr) auto;row-gap:clamp(12px,2vw,22px);
+  background:radial-gradient(rgba(255,255,255,.28) 2.5px,transparent 3px) 0 0/26px 26px,linear-gradient(160deg,#35dbe9,#12c3dc 55%,#5fe0d2);
+}
+.osbar{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:6px 16px;border-radius:99px;background:rgba(255,255,255,.3);border:2px solid rgba(255,255,255,.6);color:#0b5f73;font-weight:800;font-size:13px;backdrop-filter:blur(4px)}
+.osbar span{display:flex;align-items:center;gap:12px}
+.osbar i{font-style:normal;opacity:.75}
+.osbar .on{width:9px;height:9px;border-radius:50%;background:#4be07a;opacity:1;box-shadow:0 0 0 3px rgba(75,224,122,.3);animation:onp 1.8s ease-in-out infinite}
+@keyframes onp{50%{box-shadow:0 0 0 7px rgba(75,224,122,0)}}
+.folds{grid-column:1;grid-row:2}
+.win{grid-column:2;grid-row:2}
+.mii{grid-column:3;grid-row:2/4}
+.about{
+  grid-column:2;grid-row:3;justify-self:end;width:min(470px,92%);margin-top:clamp(-70px,-5vw,-34px);margin-right:-10px;z-index:3;rotate:1.5deg;
+  background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 18px 30px -10px rgba(0,0,0,.4),0 0 0 2px rgba(255,255,255,.75);
+}
+.about .tb{display:flex;align-items:center;gap:7px;height:30px;padding:0 12px;background:#ffe0ee;border-bottom:1px solid #ffc2dd;cursor:grab}
+.about .tb i{width:10px;height:10px;border-radius:50%;background:#ff6b6b}
+.about .tb i:nth-child(2){background:#ffcf4d}.about .tb i:nth-child(3){background:#52d273}
+.about .tb span{flex:1;text-align:center;font-weight:800;font-size:13px;color:#b0567f}
+.ab{padding:14px 18px 18px;font:600 15.5px/1.5 Nunito,Archivo,sans-serif;color:var(--cocoa)}
+.ab b{font-weight:800}
+.ab .links{margin-top:12px}
+.btn.alt{background:linear-gradient(#a6ece2,#6fd9cb);box-shadow:0 0 0 1.5px #b7f1ea,0 4px 0 #2aa89a,0 9px 10px -3px rgba(42,168,154,.35)}
+.btn.alt:hover{background:linear-gradient(#bdf3ea,#86e0d4)}
+.fold span{background:rgba(11,95,115,.28);border-radius:99px;padding:1px 8px}
+@media(max-width:860px){.osbar .os-l i{display:none}}
+@media(max-width:560px){
+  .folds,.win,.mii,.about{grid-column:auto;grid-row:auto}
+  .folds{gap:10px;justify-content:space-between}
+  .fold{width:50px}.fold span{padding:1px 5px;font-size:10px}
+  .about{width:100%;margin:0;rotate:0deg}
+  .osbar{font-size:12px;padding:5px 12px}
+}
+
+/* ---------- 25. Yükleme ekranı: pencere kartı, zıplayan harfler, yüzde ---------- */
+.ld-card{position:relative;z-index:1;width:min(360px,86vw);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 0 0 5px #fff,0 9px 0 5px rgba(217,70,138,.55),0 30px 50px -10px rgba(120,20,80,.45);animation:ldPop .6s var(--pop) both}
+.ld-card .tb{display:flex;align-items:center;gap:7px;height:34px;padding:0 14px;background:#ffe0ee;border-bottom:2px dashed #ffb3d6}
+.ld-card .tb i{width:11px;height:11px;border-radius:50%;background:#ff6b6b}
+.ld-card .tb i:nth-child(2){background:#ffcf4d}.ld-card .tb i:nth-child(3){background:#52d273}
+.ld-card .tb span{flex:1;text-align:center;padding-right:40px;font-weight:800;font-size:13px;color:#b0567f}
+.ld-in{gap:14px;padding:26px 22px 24px;background:radial-gradient(#ffe6f1 2px,transparent 2.5px) 0 0/18px 18px}
+.ld-in .angel{width:min(210px,58vw)}
+.ld-t{font:400 clamp(30px,8vw,42px)/1.1 "Titan One",Archivo,sans-serif;letter-spacing:.02em;color:#ffbcd9;-webkit-text-stroke:.14em #a67c68;paint-order:stroke fill;text-shadow:none;
+  filter:drop-shadow(2px 0 0 #fff3dc) drop-shadow(-2px 0 0 #fff3dc) drop-shadow(0 2px 0 #fff3dc) drop-shadow(0 -2px 0 #fff3dc)}
+.ld-t::after{content:none}
+.ld-t span{display:inline-block;animation:ldHop 1.1s ease-in-out infinite;animation-delay:calc(var(--i) * 90ms)}
+.ld-t span:nth-child(even){color:#bfe8e0}
+.ld-bar{width:100%;height:22px;border:3px solid #a67c68;background:#fff3dc;box-shadow:0 3px 0 rgba(166,124,104,.35)}
+.ld-bar i{width:100%;transform-origin:left;transform:scaleX(var(--ld,0));transition:transform .25s ease-out;background:repeating-linear-gradient(-45deg,#ff9fc8 0 9px,#ffc9e1 9px 18px);background-size:25.5px 25.5px;animation:ldStripe .5s linear infinite;translate:none}
+.ld-p{font:400 20px/1 "Titan One",Archivo,sans-serif;color:#a67c68}
+.ld-s{position:absolute;font-size:30px;line-height:1;color:#fff;text-shadow:0 2px 0 rgba(217,70,138,.5);animation:ldTw 2.2s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes ldPop{from{scale:.6;opacity:0;rotate:-6deg}}
+@keyframes ldHop{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-.28em) rotate(-6deg)}}
+@keyframes ldTw{0%,100%{scale:.7;opacity:.55;rotate:0deg}50%{scale:1.25;opacity:1;rotate:20deg}}
