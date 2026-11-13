@@ -390,3 +390,13 @@ body::after{
 /* Lenis: yumuşak kaydırma açıkken tarayıcının kendi yumuşatması kapalı olmalı */
 html.lenis,html.lenis body{height:auto}
 html.lenis{scroll-behavior:auto!important}
+
+/* ---------- 16. Dikiş efekti: kenarların içinde kesik çizgi ---------- */
+.btn,.info .no,nav ul a,.gh,.tidy{outline:2px dashed rgba(255,255,255,.9);outline-offset:-5px}
+.pills li{outline:2px dashed #ff9fc8;outline-offset:-5px}
+.contact>a,.contact>div{outline:2px dashed rgba(247,185,31,.95);outline-offset:-9px}
+.lime{outline:3px dashed rgba(255,255,255,.95);outline-offset:-16px}
+.desk{outline:3px dashed rgba(255,255,255,.75);outline-offset:-12px}
+@media(max-width:560px){.lime{outline-offset:-12px}.desk{outline-offset:-9px}}
+/* klavye odağı dikiş çizgisinin üstünde kalsın */
+:focus-visible{outline:3px solid var(--navy)!important;outline-offset:3px!important}
