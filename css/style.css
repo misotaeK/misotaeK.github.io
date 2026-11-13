@@ -215,7 +215,6 @@ nav ul a:hover,.btn:hover{translate:0 -2px}
 .tot{margin-top:0;font-size:22px}
 .bar{height:64px;margin:12px auto 6px;width:72%;background:repeating-linear-gradient(90deg,#e0168f 0 3px,transparent 3px 5px,#e0168f 5px 6px,transparent 6px 10px,#e0168f 10px 14px,transparent 14px 16px,#e0168f 16px 17px,transparent 17px 21px)}
 .ty{text-align:center;font-weight:900;font-size:34px;letter-spacing:-.03em}
-.rs-a{position:absolute;right:-70px;top:-70px;width:230px;z-index:3}
 
 /* ---------- 9. Yetenekler ve rozetler ---------- */
 .pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px;list-style:none;padding:0}
@@ -287,8 +286,7 @@ dialog::backdrop{background:rgba(0,0,0,.75)}
   .bd{width:50px;height:50px;line-height:42px;font-size:22px;left:-12px}
   .paper{padding:24px 20px}
   .ri{flex-direction:column;gap:2px}
-  .rs-a{right:-10px;top:-60px;width:160px}
-  .ty{font-size:28px}
+    .ty{font-size:28px}
   .badges{margin-top:44px}
 }
 /* çok küçük telefonlar */
@@ -414,3 +412,12 @@ section:nth-of-type(even) h2{color:#bfe8e0}
 .lt{-webkit-text-stroke:.2em var(--o);text-shadow:none;
   filter:drop-shadow(2.5px 0 0 var(--cream)) drop-shadow(-2.5px 0 0 var(--cream)) drop-shadow(0 2.5px 0 var(--cream)) drop-shadow(0 -2.5px 0 var(--cream)) drop-shadow(0 4px 3px rgba(120,80,60,.25))}
 .lrow{margin-bottom:.16em}
+
+/* ---------- 18. Sarı yıldız çıkartma ---------- */
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.burst{position:relative;flex:none;width:clamp(150px,18vw,210px);aspect-ratio:1;display:grid;place-items:center;rotate:6deg;filter:drop-shadow(0 6px 6px rgba(120,80,60,.18));animation:bwob 5s ease-in-out infinite}
+.burst svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.burst p{position:relative;text-align:center;font:400 clamp(17px,2vw,23px)/1.15 "Titan One",Archivo,sans-serif;color:#a67c68}
+@keyframes bwob{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) scale(1.04)}}
+/* beceri hapları: üstüne gelince siyah olmasın */
+.pills li:hover,.pills li.grab{background:#ffe3f0;color:var(--ink)}
