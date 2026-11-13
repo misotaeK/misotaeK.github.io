@@ -390,12 +390,13 @@ html.lenis,html.lenis body{height:auto}
 html.lenis{scroll-behavior:auto!important}
 
 /* ---------- 16. Dikiş efekti: kenarların içinde kesik çizgi ---------- */
-.btn,.info .no,nav ul a,.gh,.tidy{outline:2px dashed rgba(255,255,255,.9);outline-offset:-5px}
-.pills li{outline:2px dashed #ff9fc8;outline-offset:-5px}
-.contact>a,.contact>div{outline:2px dashed rgba(247,185,31,.95);outline-offset:-9px}
-.lime{outline:3px dashed rgba(255,255,255,.95);outline-offset:-16px}
-.desk{outline:3px dashed rgba(255,255,255,.75);outline-offset:-12px}
-@media(max-width:560px){.lime{outline-offset:-12px}.desk{outline-offset:-9px}}
+.btn,.info .no,nav ul a,.gh{outline:2px dashed rgba(255,255,255,.9);outline-offset:-8px}
+.tidy{outline:1.5px dashed rgba(255,255,255,.9);outline-offset:-5px}
+.pills li{outline:2px dashed #ff9fc8;outline-offset:-9px}
+.contact>a,.contact>div{outline:2px dashed rgba(247,185,31,.95);outline-offset:-13px}
+.lime{outline:3px dashed rgba(255,255,255,.95);outline-offset:-22px}
+.desk{outline:3px dashed rgba(255,255,255,.75);outline-offset:-18px}
+@media(max-width:560px){.lime{outline-offset:-16px}.desk{outline-offset:-13px}}
 /* klavye odağı dikiş çizgisinin üstünde kalsın */
 :focus-visible{outline:3px solid var(--navy)!important;outline-offset:3px!important}
 
@@ -421,3 +422,31 @@ section:nth-of-type(even) h2{color:#bfe8e0}
 @keyframes bwob{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg) scale(1.04)}}
 /* beceri hapları: üstüne gelince siyah olmasın */
 .pills li:hover,.pills li.grab{background:#ffe3f0;color:var(--ink)}
+
+/* dikiş içeride kalsın diye düğmelerde biraz daha dolgu */
+.btn{padding:9px 24px}
+nav ul a{padding:6px 18px}
+.info .no{padding:5px 18px}
+.gh{width:46px;height:46px}
+.pills li{padding:11px 24px}
+@media(max-width:560px){nav ul a{padding:6px 13px}.gh{width:42px;height:42px}}
+
+/* ---------- 19. Proje metinleri: etiketler, giriş cümlesi, maddeler ---------- */
+:root{--cocoa:#4a342c}
+.tags{display:flex;flex-wrap:wrap;gap:7px;list-style:none;padding:0;margin:0 0 14px}
+.tags li{font:800 13px/1 Nunito,Archivo,sans-serif;color:var(--cocoa);background:#fff;border:2px solid #ffc2dd;border-radius:99px;padding:6px 12px}
+.tags li:nth-child(3n+2){border-color:#a9e4da;background:#effbf9}
+.tags li:nth-child(3n){border-color:#f5dc8a;background:#fffbe8}
+.txt{
+  max-width:34em;padding:22px 24px;background:rgba(255,255,255,.86);border-radius:24px;color:var(--cocoa);
+  font-family:Nunito,Archivo,sans-serif;font-weight:600;box-shadow:0 5px 0 rgba(236,90,152,.28),0 12px 18px -10px rgba(120,80,60,.3);
+  outline:2px dashed #ffc2dd;outline-offset:-9px;
+}
+.lead{font-weight:800;font-size:1.08em;line-height:1.4;max-width:none}
+.pts{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
+.pts li{position:relative;padding-left:26px;line-height:1.4;font-size:.97em}
+.pts li::before{content:"♥";position:absolute;left:2px;top:.05em;color:#ff7fb6;font-size:.95em}
+.pts li:nth-child(even)::before{content:"★";color:#f2b93b}
+.more p{font-family:Nunito,Archivo,sans-serif;font-weight:600;color:var(--cocoa)}
+.more small,.priv{font-family:Nunito,Archivo,sans-serif}
+@media(max-width:560px){.txt{padding:20px 18px}}
