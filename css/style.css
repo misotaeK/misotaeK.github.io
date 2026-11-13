@@ -46,7 +46,6 @@ main.wrap{padding-bottom:clamp(60px,10vw,90px)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:fixed;left:12px;top:-60px;z-index:100;background:#fff;padding:8px 16px;border-radius:99px;font-weight:800;transition:top .2s}
 .skip:focus{top:12px}
-.hand{font:600 24px/1.15 Caveat,cursive;letter-spacing:0}
 
 /* beyaz kenarlı, pembe gölgeli çıkartma yazı */
 h2,.hl2,.more h3,.contact .k{
@@ -97,12 +96,6 @@ nav ul a:hover,.btn:hover{translate:0 -2px}
 .shot::before{content:"";position:absolute;left:50%;top:-13px;width:92px;height:26px;margin-left:-46px;background:var(--tape);rotate:var(--t,-3deg);box-shadow:0 1px 2px rgba(0,0,0,.15)}
 .shot.grab{box-shadow:0 30px 50px -12px rgba(0,0,0,.45)}
 
-/* not kağıdı: bantlı, delikli defter yaprağı */
-.note{
-  position:relative;width:250px;aspect-ratio:612/620;padding:24% 9% 9% 18%;color:#3b3560;
-  background:url(../img/note.webp) center/100% 100% no-repeat;
-  font-size:21px;line-height:1.15;filter:drop-shadow(0 8px 8px rgba(0,0,0,.22));
-}
 
 /* melek kalp (angelRadio) */
 .angel{position:relative;aspect-ratio:344/178;width:100%;cursor:pointer;filter:drop-shadow(0 12px 14px rgba(0,0,0,.18))}
@@ -181,7 +174,6 @@ nav ul a:hover,.btn:hover{translate:0 -2px}
 .proj:nth-of-type(even) .pile{order:2}
 .pile{position:relative;padding-bottom:9%}
 .pile .shot:nth-child(2){position:absolute;width:52%;right:-3%;bottom:0;z-index:2}
-.pile .note{position:absolute;left:0;bottom:-22px;z-index:3}
 .pile .angel{width:88%;margin:6% auto}
 .pile.flat{padding-bottom:0}
 .stk{position:relative;aspect-ratio:1.15}
@@ -271,8 +263,7 @@ dialog::backdrop{background:rgba(0,0,0,.75)}
 @media(max-width:860px){
   .proj{grid-template-columns:minmax(0,1fr)}
   .proj:nth-of-type(even) .pile{order:0}
-  .pile .note{position:relative;left:0;bottom:0;margin-top:22px}
-  .more>div{grid-template-columns:minmax(0,1fr);gap:8px}
+    .more>div{grid-template-columns:minmax(0,1fr);gap:8px}
   .lime{padding:56px 28px 36px}
 }
 /* telefon */
@@ -299,7 +290,6 @@ dialog::backdrop{background:rgba(0,0,0,.75)}
   .rs-a{right:-10px;top:-60px;width:160px}
   .ty{font-size:28px}
   .badges{margin-top:44px}
-  .note{width:210px;font-size:19px}
 }
 /* çok küçük telefonlar */
 @media(max-width:360px){
@@ -396,3 +386,7 @@ body::after{
 .up img{width:30px;height:auto;animation:beat 1.6s ease-in-out infinite}
 .pills li{cursor:pointer;user-select:none;-webkit-user-select:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;translate:none}}
+
+/* Lenis: yumuşak kaydırma açıkken tarayıcının kendi yumuşatması kapalı olmalı */
+html.lenis,html.lenis body{height:auto}
+html.lenis{scroll-behavior:auto!important}

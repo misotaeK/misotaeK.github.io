@@ -7,6 +7,23 @@
   const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
   const rand = (a, b) => a + Math.random() * (b - a);
 
+  /* ---------- yumuşak kaydırma (Lenis) ---------- */
+  let lenis = null;
+  if (window.Lenis && !reduce) {
+    lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    document.documentElement.classList.add("lenis");
+    const raf = time => { lenis.raf(time); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+    // menü ve klasör bağlantıları da yumuşak kayar
+    document.addEventListener("click", e => {
+      const a = e.target.closest('a[href^="#"]');
+      const target = a && $(a.getAttribute("href"));
+      if (!target) return;
+      e.preventDefault();
+      lenis.scrollTo(target, { offset: -80, duration: 1.5 });
+    });
+  }
+
   /* ---------- yükleme ekranı ---------- */
   const loader = $("#loader");
   if (loader) {
@@ -134,9 +151,11 @@
     if (s.dataset.href) { open(s.dataset.href, "_blank", "noopener"); return; }
     const im = $("img", s);
     big.src = im.currentSrc || im.src; big.alt = im.alt;
+    if (lenis) lenis.stop();
     dlg.showModal();
   }));
   dlg.addEventListener("click", () => dlg.close());
+  dlg.addEventListener("close", () => { if (lenis) lenis.start(); });
 
   /* ---------- melek: tıklayınca kalpler ---------- */
   $$(".angel").forEach(a => a.addEventListener("click", e => {
@@ -214,7 +233,7 @@
   };
   addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
-  if (up) up.addEventListener("click", () => scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }));
+  if (up) up.addEventListener("click", () => lenis ? lenis.scrollTo(0, { duration: 1.5 }) : scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" }));
 
   /* ---------- menü: landing'de gizli, aşağı inince kayarak gelir ---------- */
   const nav = $("nav"), desk = $(".desk");
