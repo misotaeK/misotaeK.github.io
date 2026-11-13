@@ -12,6 +12,7 @@
   if (window.Lenis && !reduce) {
     lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     document.documentElement.classList.add("lenis");
+    window.__lenis = lenis;
     const raf = time => { lenis.raf(time); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
     // menü ve klasör bağlantıları da yumuşak kayar
@@ -103,6 +104,9 @@
     let ox = 0, oy = 0, sx, sy, px, py, on = false;
     el.addEventListener("pointerdown", e => {
       if (e.button) return;
+      // içindeki bağlantı ve düğmeler tıklanabilsin: onlardan sürükleme başlatma
+      const inner = e.target.closest("a,button");
+      if (inner && inner !== el) return;
       delete el.dataset.moved;
       on = true; px = e.clientX; py = e.clientY; sx = px - ox; sy = py - oy;
       el.setPointerCapture(e.pointerId); el.classList.add("grab");
