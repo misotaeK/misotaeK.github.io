@@ -400,3 +400,17 @@ html.lenis{scroll-behavior:auto!important}
 @media(max-width:560px){.lime{outline-offset:-12px}.desk{outline-offset:-9px}}
 /* klavye odağı dikiş çizgisinin üstünde kalsın */
 :focus-visible{outline:3px solid var(--navy)!important;outline-offset:3px!important}
+
+/* ---------- 17. Yazı stili: pastel dolgu, kahverengi kenar, krem dış kenar ---------- */
+:root{--choco:#a67c68;--cream:#fff3dc}
+h2,.more h3,.hl2{font-family:"Titan One",Archivo,sans-serif;font-weight:400;letter-spacing:.01em;line-height:1.08;text-shadow:none;paint-order:stroke fill}
+h2{
+  color:#ffbcd9;-webkit-text-stroke:.13em var(--choco);padding:.12em .1em;letter-spacing:.03em;
+  filter:drop-shadow(3px 0 0 var(--cream)) drop-shadow(-3px 0 0 var(--cream)) drop-shadow(0 3px 0 var(--cream)) drop-shadow(0 -3px 0 var(--cream)) drop-shadow(0 6px 4px rgba(120,80,60,.25));
+}
+section:nth-of-type(even) h2{color:#bfe8e0}
+.more h3{color:#ffbcd9;-webkit-text-stroke:.13em var(--choco);padding:.1em .08em}
+.hl2{color:#7a5646;-webkit-text-stroke:.12em var(--cream);padding:.08em .22em .12em}
+.lt{-webkit-text-stroke:.2em var(--o);text-shadow:none;
+  filter:drop-shadow(2.5px 0 0 var(--cream)) drop-shadow(-2.5px 0 0 var(--cream)) drop-shadow(0 2.5px 0 var(--cream)) drop-shadow(0 -2.5px 0 var(--cream)) drop-shadow(0 4px 3px rgba(120,80,60,.25))}
+.lrow{margin-bottom:.16em}

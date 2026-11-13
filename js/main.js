@@ -47,8 +47,7 @@
 
   /* ---------- içerik üretimi ---------- */
   // başlık: her harf ayrı bir çıkartma
-  const pal = [["#ffe27a", "#f0a02c"], ["#ff9fc8", "#d9468a"], ["#9be3c0", "#2e8f63"], ["#8fb4ff", "#2f56b8"],
-                 ["#dcaef2", "#7d4fb4"], ["#ffbf80", "#e0702a"], ["#b9ec7a", "#6d9a1a"], ["#8fe0f0", "#2a93a8"]];
+  const pal = [["#bfe8e0", "#a67c68"], ["#ffc1dc", "#a67c68"], ["#fff0b8", "#a67c68"], ["#e0cdf5", "#a67c68"]];
   const lines = $("#lines");
   if (lines) {
     let idx = 0;
@@ -58,7 +57,7 @@
       [...text.toLocaleUpperCase("tr")].forEach((ch, i) => {
         const e = document.createElement("span");
         if (ch === " ") { e.className = "sp"; row.append(e); return; }
-        const [c, o] = pal[(ri * 3 + i * 5) % pal.length];
+        const [c, o] = pal[ri % 2];
         e.className = "lt"; e.textContent = ch; e.dataset.drag = "";
         e.style.cssText = `--i:${idx++};--c:${c};--o:${o};--r:${rand(-9, 9).toFixed(1)}deg;--y:${rand(-.05, .05).toFixed(3)}em`;
         // dokununca kendi etrafında döner
