@@ -576,3 +576,14 @@ h2:hover .ch{animation:chHop .55s var(--pop);animation-delay:calc(var(--i) * 30m
 .soon{display:inline-block;font:800 15px/1 Nunito,Archivo,sans-serif;color:#a67c68;background:#fff3b0;border:3px solid #fff;border-radius:99px;padding:10px 20px;outline:2px dashed #f2c94c;outline-offset:-7px;box-shadow:0 4px 0 rgba(242,185,59,.55);animation:soon 2.6s ease-in-out infinite}
 @keyframes soon{0%,100%{rotate:-2deg}50%{rotate:2deg;translate:0 -3px}}
 .ld-in{padding-top:30px}
+
+/* kendi çizimi karakter: Mii'den daha geniş */
+.mii{width:clamp(150px,17vw,230px)}
+@media(max-width:560px){.mii{width:150px;margin-top:64px}.mb{max-width:min(190px,calc(100vw - 230px))}}
+
+/* giriş animasyonu yalnızca bir kez oynasın (üstüne gelip çıkınca baştan başlamasın) */
+h2.in.played .ch{animation:none}
+h2.in.played:hover .ch{animation:chHop .55s var(--pop);animation-delay:calc(var(--i) * 30ms)}
+/* sohbet balonu: sabit boyut, her mesajda yeniden belirmesin */
+.mb{width:200px;min-width:0;max-width:none;min-height:74px;display:flex;align-items:center}
+@media(max-width:560px){.mb{width:min(180px,calc(100vw - 230px));max-width:none}}

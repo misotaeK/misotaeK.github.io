@@ -206,7 +206,7 @@
 
   /* ---------- sayfa kaydırdıkça beliren bölümler ---------- */
   if (!reduce && "IntersectionObserver" in window) {
-    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }),
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const t = e.target; t.classList.add("in"); io.unobserve(t); setTimeout(() => t.classList.add("played"), 2600); } }),
       { threshold: .12, rootMargin: "0px 0px -6% 0px" });
     $$("h2,.info,.pile,.receipt,.badges,.contact,.pills,.more").forEach(el => { el.classList.add("rv"); io.observe(el); });
   }
@@ -270,7 +270,6 @@
       let i = 0, timer;
       const say = (text, after) => {
         clearTimeout(timer); t.textContent = ""; mii.classList.add("talking");
-        bub.style.animation = "none"; void bub.offsetWidth; bub.style.animation = "";
         let k = 0;
         (function step() {
           if (k < text.length) { t.textContent += text[k++]; timer = setTimeout(step, 42); }
