@@ -605,15 +605,10 @@ h2.in.played:hover .ch{animation:chHop .55s var(--pop);animation-delay:calc(var(
 @keyframes petbob{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-6px) rotate(1.5deg)}}
 .pb{position:absolute;left:50%;bottom:calc(100% + 2px);z-index:2;white-space:nowrap;pointer-events:none;background:#fff;border:3px solid var(--pink);border-radius:16px;padding:6px 12px;font:800 14px/1.2 Nunito,Archivo,sans-serif;color:var(--navy);box-shadow:0 4px 0 rgba(236,90,152,.35);opacity:0;translate:-50% 8px;scale:.6;transition:opacity .2s,translate .3s var(--pop),scale .3s var(--pop)}
 .pb.show{opacity:1;translate:-50% 0;scale:1}
-#yetenekler,#rozetler{position:relative}
 .p-rec{left:-46px;bottom:-34px;--dl:-.6s}
-.p-skill{right:1%;top:clamp(28px,6vw,64px);--dl:-1.4s}
-.p-badge{right:2%;bottom:-24px;--dl:-2.1s}
 .p-contact{right:3%;bottom:-62px;--dl:-.9s}
 @media(max-width:560px){
   .pet.x{width:84px}
   .p-rec{left:-6px;bottom:-30px}
-  .p-skill{top:-18px}
-  .p-badge{bottom:-46px}
-  .p-contact{right:2%;bottom:-58px}
+      .p-contact{right:2%;bottom:-58px}
 }
