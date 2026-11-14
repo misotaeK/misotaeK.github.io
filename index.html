@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800;900&family=Nunito:wght@600;800&family=Titan+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=14">
+<link rel="stylesheet" href="css/style.css?v=17">
 </head>
 <body>
 <div id="loader" role="status" aria-label="Yükleniyor">
@@ -76,11 +76,11 @@
     </div>
 
     <div class="folds">
-      <a class="fold" href="#projeler" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-folder"/></svg><span>projeler</span></a>
-      <a class="fold" href="#deneyim" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-folder"/></svg><span>deneyim</span></a>
-      <a class="fold" href="#rozetler" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-folder"/></svg><span>rozetler</span></a>
-      <a class="fold" href="mailto:su_kiratli@hotmail.com" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-mail"/></svg><span>e-posta</span></a>
-      <a class="fold" href="https://github.com/misotaeK" target="_blank" rel="noopener" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><rect x="11" y="3" width="58" height="58" rx="16" fill="#ff9fc8" stroke="#e8508f" stroke-width="2.5"/><use href="#i-github" x="23" y="15" width="34" height="34" style="color:#fff"/></svg><span>github</span></a>
+      <a class="fold" href="#projeler" title="Projelere git" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-folder"/></svg><span>projeler</span></a>
+      <a class="fold" href="#deneyim" title="Deneyime git" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-folder"/></svg><span>deneyim</span></a>
+      <a class="fold" href="#rozetler" title="Rozetlere git" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-folder"/></svg><span>rozetler</span></a>
+      <a class="fold" href="mailto:su_kiratli@hotmail.com" title="su_kiratli@hotmail.com adresine e-posta gönder" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><use href="#i-mail"/></svg><span>e-posta</span></a>
+      <a class="fold" href="https://github.com/misotaeK" target="_blank" rel="noopener" title="github.com/misotaeK profilini aç" data-drag><svg viewBox="0 0 80 64" aria-hidden="true"><rect x="11" y="3" width="58" height="58" rx="16" fill="#ff9fc8" stroke="#e8508f" stroke-width="2.5"/><use href="#i-github" x="23" y="15" width="34" height="34" style="color:#fff"/></svg><span>github</span></a>
     </div>
 
     <div class="win">
@@ -96,7 +96,7 @@
       </div>
     </div>
 
-    <div class="mii" data-drag id="mii" role="img" aria-label="Çisel Su'nun çizdiği tavşan karakter">
+    <div class="mii pet" data-drag id="mii" role="img" aria-label="Çisel Su'nun çizdiği tavşan karakter">
           <div class="mb" aria-hidden="true"><span class="mt"></span></div>
           <div class="mw"><img src="img/miso.webp" width="505" height="640" alt="" draggable="false"></div>
         </div>
@@ -228,17 +228,20 @@
       <div class="bar" aria-hidden="true"></div>
       <p class="ty">teşekkürler!</p>
     </div>
+    <div class="pet x flip p-rec" data-drag data-say="fişi ben kestim ✿" aria-hidden="true"><img src="img/miso.webp" width="505" height="640" loading="lazy" decoding="async" alt="" draggable="false"></div>
   </div>
 </section>
 
 <!-- ===== Yetenekler ===== -->
 <section id="yetenekler" aria-labelledby="h-yetenek">
+  <div class="pet x p-skill" data-drag data-say="hepsini seviyorum ♥" aria-hidden="true"><img src="img/miso.webp" width="505" height="640" loading="lazy" decoding="async" alt="" draggable="false"></div>
   <h2 id="h-yetenek">Alet Çantası</h2>
   <ul class="pills" id="pills"></ul>
 </section>
 
 <!-- ===== Rozetler ===== -->
 <section id="rozetler" aria-labelledby="h-rozet">
+  <div class="pet x flip p-badge" data-drag data-say="rozetlerimi gördün mü?" aria-hidden="true"><img src="img/miso.webp" width="505" height="640" loading="lazy" decoding="async" alt="" draggable="false"></div>
   <h2 id="h-rozet">Rozetler</h2>
   <div class="badges">
     <div class="shot" data-drag style="--r:-5deg"><img src="img/nse1-exam.webp" width="480" height="480" loading="lazy" decoding="async" alt="Fortinet NSE 1 Exam: Cybersecurity and Cloud Fundamentals v1.0"></div>
@@ -251,6 +254,7 @@
 <section id="iletisim" class="lime" aria-labelledby="h-iletisim">
   <a class="env" href="mailto:su_kiratli@hotmail.com" aria-label="E-posta gönder"><svg viewBox="0 0 200 110" aria-hidden="true"><g class="ewl"><path d="M62 52C42 18 10 20 5 44c10 0 15 6 17 13 8-2 14 4 16 10 9-2 17 0 24 4Z" fill="#fff3dc" stroke="#e8508f" stroke-width="3.5" stroke-linejoin="round"/></g><g transform="translate(200 0) scale(-1 1)"><g class="ewl"><path d="M62 52C42 18 10 20 5 44c10 0 15 6 17 13 8-2 14 4 16 10 9-2 17 0 24 4Z" fill="#fff3dc" stroke="#e8508f" stroke-width="3.5" stroke-linejoin="round"/></g></g><rect x="58" y="28" width="84" height="58" rx="8" fill="#ffb3d6" stroke="#e8508f" stroke-width="3.5"/><path d="M60 33l40 30 40-30" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M100 78c-9-6-12-11-12-15 0-4 3-6 6-6 2 0 4 1 6 4 2-3 4-4 6-4 3 0 6 2 6 6 0 4-3 9-12 15Z" fill="#ff4f9a" stroke="#fff" stroke-width="2"/></svg></a>
   <div class="eyes" aria-hidden="true"><div class="eye"><u></u></div><div class="eye"><u></u></div></div>
+  <div class="pet x p-contact" data-drag data-say="bana yaz, çok sevinirim ✿" aria-hidden="true"><img src="img/miso.webp" width="505" height="640" loading="lazy" decoding="async" alt="" draggable="false"></div>
   <h2 id="h-iletisim">Merhaba de</h2>
   <div class="contact">
     <a href="mailto:su_kiratli@hotmail.com"><i class="bd">1</i><span class="k">E-POSTA</span><span class="v">su_kiratli@hotmail.com</span></a>
@@ -264,6 +268,6 @@
 <dialog id="dlg" aria-label="Büyütülmüş görsel"><img alt=""></dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
-<script src="js/main.js?v=14" defer></script>
+<script src="js/main.js?v=17" defer></script>
 </body>
 </html>

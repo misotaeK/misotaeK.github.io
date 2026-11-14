@@ -101,21 +101,32 @@
   // kısa basış tıklama, uzun hareket sürükleme sayılır
   const dlg = $("#dlg"), big = $("img", dlg);
   function makeDraggable(el) {
-    let ox = 0, oy = 0, sx, sy, px, py, on = false;
+    let ox = 0, oy = 0, sx, sy, s0 = 0, cx = 0, cy = 0, on = false, raf = 0;
+    const isPet = el.classList.contains("pet");
+    // sayfa kayarken parça imlecin altında kalsın
+    const place = () => { ox = cx - sx; oy = cy - sy + (scrollY - s0); el.style.translate = `${ox}px ${oy}px`; };
+    // karakteri ekranın üst/alt kenarına götürünce sayfa kayar
+    const edge = () => {
+      if (!on) { raf = 0; return; }
+      const m = 80; let d = 0;
+      if (cy < m) d = -(m - cy) / m * 20; else if (cy > innerHeight - m) d = (cy - (innerHeight - m)) / m * 20;
+      if (d) { const t = Math.max(0, scrollY + d); lenis ? lenis.scrollTo(t, { immediate: true }) : scrollTo(0, t); place(); }
+      raf = requestAnimationFrame(edge);
+    };
     el.addEventListener("pointerdown", e => {
       if (e.button) return;
       // içindeki bağlantı ve düğmeler tıklanabilsin: onlardan sürükleme başlatma
       const inner = e.target.closest("a,button");
       if (inner && inner !== el) return;
       delete el.dataset.moved;
-      on = true; px = e.clientX; py = e.clientY; sx = px - ox; sy = py - oy;
+      on = true; cx = e.clientX; cy = e.clientY; sx = cx - ox; sy = cy - oy; s0 = scrollY;
       el.setPointerCapture(e.pointerId); el.classList.add("grab");
+      if (isPet && !raf) raf = requestAnimationFrame(edge);
     });
     el.addEventListener("pointermove", e => {
       if (!on) return;
-      if (Math.hypot(e.clientX - px, e.clientY - py) > 5) el.dataset.moved = "1";
-      ox = e.clientX - sx; oy = e.clientY - sy;
-      el.style.translate = `${ox}px ${oy}px`;
+      if (Math.hypot(e.clientX - (sx + ox), e.clientY - (sy + oy - (scrollY - s0))) > 5) el.dataset.moved = "1";
+      cx = e.clientX; cy = e.clientY; place();
     });
     const end = () => { on = false; el.classList.remove("grab"); };
     // 'toparla' düğmesi: harf yerine yaylanarak döner
@@ -131,6 +142,18 @@
     el.addEventListener("click", e => { if (el.dataset.moved) { e.preventDefault(); e.stopPropagation(); } }, true);
   }
   $$("[data-drag]").forEach(makeDraggable);
+
+  /* ---------- sayfadaki küçük karakterler: tıklayınca konuşur ---------- */
+  $$(".pet[data-say]").forEach(p => {
+    const bub = document.createElement("span"); bub.className = "pb"; p.append(bub);
+    const im = $("img", p); let t;
+    p.addEventListener("click", e => {
+      if (p.dataset.moved) return;
+      bub.textContent = p.dataset.say; bub.classList.add("show");
+      clearTimeout(t); t = setTimeout(() => bub.classList.remove("show"), 2600);
+      if (!reduce) { im.animate([{ translate: "0 0" }, { translate: "0 -20px" }, { translate: "0 0" }], { duration: 480, easing: "cubic-bezier(.3,1.6,.5,1)" }); burst(e.clientX, e.clientY, 5, 160); }
+    });
+  });
   document.addEventListener("dragstart", e => e.preventDefault());
 
   /* ---------- pencere başlığına tıkla: harfler renk değiştirir ---------- */
