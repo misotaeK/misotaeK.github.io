@@ -7,6 +7,19 @@
   const reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
   const rand = (a, b) => a + Math.random() * (b - a);
 
+  /* ---------- dil (TR / EN): tarayıcı dilinden başlar, seçim hatırlanır ---------- */
+  const guess = () => ((navigator.language || "tr").toLowerCase().startsWith("tr") ? "tr" : "en");
+  let lang = guess();
+  try { lang = localStorage.getItem("lang") || lang; } catch (e) { /* gizli mod */ }
+  const ROWS = { tr: ["Meraklı", "geliştirici,", "ağ kurucu,", "arayüz sever"], en: ["Curious", "developer,", "network nerd,", "UI lover"] };
+  const MSGS = {
+    tr: ["merhaba! ben Su ✿", "web, veritabanı ve ağ işleri yapıyorum", "aynı zamanda illüstratörüm: Photoshop, Clip Studio Paint ✿",
+         "buradaki her şeyi tutup sürükleyebilirsin!", "resimlere tıkla, büyüsünler ♥", "projelere göz at ↓", "benimle çalışmak ister misin?"],
+    en: ["hi! I'm Su ✿", "I do web, databases and networks", "I'm also an illustrator: Photoshop, Clip Studio Paint ✿",
+         "you can grab and drag everything here!", "click the pictures, they zoom ♥", "take a look at the projects ↓", "want to work with me?"]
+  };
+  const HIHI = { tr: ["hihi! ♥", "gıdıklanıyorum!", "selam selam ✿"], en: ["hehe! ♥", "that tickles!", "hi hi ✿"] };
+
   /* ---------- yumuşak kaydırma (Lenis) ---------- */
   let lenis = null;
   if (window.Lenis && !reduce) {
@@ -54,15 +67,28 @@
   }
 
   /* ---------- içerik üretimi ---------- */
-  // başlık: her harf ayrı bir çıkartma
+  // başlık: her harf ayrı bir çıkartma (dil değişince yeniden kurulur)
   const pal = [["#bfe8e0", "#a67c68"], ["#ffc1dc", "#a67c68"], ["#fff0b8", "#a67c68"], ["#e0cdf5", "#a67c68"]];
   const lines = $("#lines");
-  if (lines) {
+  let builtLang = null;
+  // en uzun satır pencereye sığmazsa yazı biraz küçülür
+  function fitLetters() {
+    if (!lines) return;
+    lines.style.setProperty("--fit", "1");
+    const cs = getComputedStyle(lines), avail = lines.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    let max = 0;
+    // offset ölçüleri giriş animasyonundaki küçültmeden etkilenmez
+    $$(".lrow", lines).forEach(r => { const f = r.firstElementChild, l = r.lastElementChild; max = Math.max(max, l.offsetLeft + l.offsetWidth - f.offsetLeft); });
+    lines.style.setProperty("--fit", max > avail ? (avail / max * .96).toFixed(3) : "1");
+  }
+  function buildLetters(bindDrag) {
+    if (!lines) return;
+    builtLang = lang; lines.innerHTML = "";
     let idx = 0;
-    ["Meraklı", "geliştirici,", "ağ kurucu,", "arayüz sever"].forEach((text, ri) => {
+    ROWS[lang].forEach((text, ri) => {
       const row = document.createElement("div");
       row.className = "lrow";
-      [...text.toLocaleUpperCase("tr")].forEach((ch, i) => {
+      [...text.toLocaleUpperCase(lang)].forEach(ch => {
         const e = document.createElement("span");
         if (ch === " ") { e.className = "sp"; row.append(e); return; }
         const [c, o] = pal[ri % 2];
@@ -78,15 +104,63 @@
       });
       lines.append(row);
     });
+    if (bindDrag) $$(".lt", lines).forEach(makeDraggable);
+    fitLetters();
   }
+  buildLetters(false);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLetters);
 
-  // beceriler
+  // beceriler (illüstrasyon araçları başta)
   const pills = $("#pills");
   if (pills) {
-    pills.innerHTML = ["C#", "ASP.NET MVC", "Entity Framework", "PHP", "JavaScript", "Python", "Java", "C++", "SQL / PL-SQL", "Oracle",
-      "MS SQL Server", "MySQL", "jQuery", "Bootstrap", "React Native", "Git", "UML", "TCP/IP", "MikroTik", "Cisco Packet Tracer", "CAT6 & Fiber"]
-      .map(s => `<li data-drag>${s}</li>`).join("");
+    const tools = ["Photoshop", "Clip Studio Paint", ["İllüstrasyon", "Illustration"], "C#", "ASP.NET MVC", "Entity Framework", "PHP", "JavaScript", "Python", "Java", "C++",
+      "SQL / PL-SQL", "Oracle", "MS SQL Server", "MySQL", "jQuery", "Bootstrap", "React Native", "Git", "UML", "TCP/IP", "MikroTik", "Cisco Packet Tracer", "CAT6 & Fiber"];
+    pills.innerHTML = tools.map(s => Array.isArray(s) ? `<li data-drag data-en="${s[1]}">${s[0]}</li>` : `<li data-drag>${s}</li>`).join("");
   }
+
+  // dil uygulayıcı: data-en, data-en-alt/title/aria-label, data-say-en ve başlık harfleri
+  function setHeadings() {
+    $$("h2").forEach(h => {
+      if (h.dataset.tr === undefined) h.dataset.tr = h.textContent;
+      const text = lang === "en" && h.dataset.en ? h.dataset.en : h.dataset.tr;
+      h.setAttribute("aria-label", text);
+      if (reduce) { h.textContent = text; return; }
+      let i = 0;
+      h.innerHTML = text.split(" ").map(w => `<span aria-hidden="true" style="white-space:nowrap">${[...w].map(ch => `<span class="ch" style="--i:${i++}">${ch}</span>`).join("")}</span>`).join(" ");
+    });
+  }
+  function applyLang(initial) {
+    document.documentElement.lang = lang;
+    $$("[data-en]").forEach(el => {
+      if (el.tagName === "H2") return;
+      if (el.dataset.tr === undefined) el.dataset.tr = el.innerHTML;
+      el.innerHTML = lang === "en" ? el.dataset.en : el.dataset.tr;
+    });
+    ["alt", "title", "aria-label"].forEach(a => $$(`[data-en-${a}]`).forEach(el => {
+      const k = `data-tr-${a}`;
+      if (!el.hasAttribute(k)) el.setAttribute(k, el.getAttribute(a) || "");
+      el.setAttribute(a, lang === "en" ? el.getAttribute(`data-en-${a}`) : el.getAttribute(k));
+    }));
+    $$("[data-say-en]").forEach(el => {
+      if (el.dataset.sayTr === undefined) el.dataset.sayTr = el.dataset.say;
+      el.dataset.say = lang === "en" ? el.dataset.sayEn : el.dataset.sayTr;
+    });
+    const ld = $(".ld-t");
+    if (ld) ld.innerHTML = [...(lang === "en" ? "loading" : "yükleniyor")].map((c, i) => `<span style="--i:${i}">${c}</span>`).join("");
+    $$("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    $$("[data-lang-toggle]").forEach(b => { b.textContent = lang === "en" ? "TR" : "EN"; });
+    setHeadings();
+    if (builtLang !== lang) buildLetters(!initial);
+    dispatchEvent(new Event("langchange"));
+  }
+  function setLang(l) {
+    if (l === lang) return;
+    lang = l;
+    try { localStorage.setItem("lang", l); } catch (e) { /* gizli mod */ }
+    applyLang(false);
+  }
+  $$("[data-lang]").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+  $$("[data-lang-toggle]").forEach(b => b.addEventListener("click", () => setLang(lang === "tr" ? "en" : "tr")));
 
   // melek kalp: aynı parçadan her yerde
   $$("[data-angel]").forEach(a => {
@@ -141,6 +215,7 @@
     // sürüklemeden sonra bağlantı açılmasın
     el.addEventListener("click", e => { if (el.dataset.moved) { e.preventDefault(); e.stopPropagation(); } }, true);
   }
+  applyLang(true);
   $$("[data-drag]").forEach(makeDraggable);
 
   /* ---------- sayfadaki küçük karakterler: tıklayınca konuşur ---------- */
@@ -220,13 +295,6 @@
     });
   });
 
-  /* ---------- başlıklar harf harf zıplasın ---------- */
-  if (!reduce) $$("h2").forEach(h => {
-    const text = h.textContent; let i = 0;
-    h.setAttribute("aria-label", text);
-    h.innerHTML = text.split(" ").map(w => `<span aria-hidden="true" style="white-space:nowrap">${[...w].map(ch => `<span class="ch" style="--i:${i++}">${ch}</span>`).join("")}</span>`).join(" ");
-  });
-
   /* ---------- sayfa kaydırdıkça beliren bölümler ---------- */
   if (!reduce && "IntersectionObserver" in window) {
     const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const t = e.target; t.classList.add("in"); io.unobserve(t); setTimeout(() => t.classList.add("played"), 2600); } }),
@@ -286,9 +354,8 @@
   const mii = $("#mii");
   if (mii) {
     const t = $(".mt", mii), bub = $(".mb", mii);
-    const msgs = ["merhaba! ben Su ✿", "web, veritabanı ve ağ işleri yapıyorum", "buradaki her şeyi tutup sürükleyebilirsin!",
-                  "resimlere tıkla, büyüsünler ♥", "projelere göz at ↓", "benimle çalışmak ister misin?"];
-    if (reduce) { t.textContent = msgs[0]; }
+    const cur = () => MSGS[lang];
+    if (reduce) { t.textContent = cur()[0]; addEventListener("langchange", () => { t.textContent = cur()[0]; }); }
     else {
       let i = 0, timer;
       const say = (text, after) => {
@@ -299,14 +366,15 @@
           else { mii.classList.remove("talking"); timer = setTimeout(after, 2600); }
         })();
       };
-      const loop = () => say(msgs[i++ % msgs.length], loop);
+      const loop = () => say(cur()[i++ % cur().length], loop);
+      addEventListener("langchange", () => { i = 0; loop(); });
       // sekme görünmezken yazı yazmasın
       document.addEventListener("visibilitychange", () => { if (document.hidden) clearTimeout(timer); else loop(); });
       loop();
       mii.addEventListener("click", e => {
         if (mii.dataset.moved) return;
         mii.classList.remove("jump"); void mii.offsetWidth; mii.classList.add("jump");
-        say(["hihi! ♥", "gıdıklanıyorum!", "selam selam ✿"][Math.floor(Math.random() * 3)], loop);
+        say(HIHI[lang][Math.floor(Math.random() * 3)], loop);
         burst(e.clientX, e.clientY, 7, 200);
       });
     }
