@@ -368,9 +368,6 @@ body::after{
 /* ekran görüntüleri imleci izleyip eğilir */
 .shot img{transition:transform .25s var(--ease);will-change:transform}
 
-/* imleç izi */
-.tr{position:fixed;z-index:60;pointer-events:none;font-size:15px;line-height:1;color:#ff6fae;animation:trail .9s ease-out forwards}
-@keyframes trail{to{opacity:0;transform:translate(var(--x),30px) scale(.3) rotate(120deg)}}
 
 /* kaydırma çubuğu ve başa dön kalbi */
 #prog{position:fixed;top:0;left:0;right:0;height:5px;z-index:40;background:var(--pk);box-shadow:0 2px 6px rgba(217,70,138,.4);transform:scaleX(var(--p,0));transform-origin:left}

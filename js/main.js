@@ -320,20 +320,6 @@
     });
   }
 
-  /* ---------- imleç izi ve boş yere tıklayınca kalp yağmuru ---------- */
-  if (matchMedia("(hover:hover)").matches && !reduce) {
-    let lx = -99, ly = -99;
-    addEventListener("pointermove", e => {
-      if (e.buttons || Math.hypot(e.clientX - lx, e.clientY - ly) < 28) return;
-      lx = e.clientX; ly = e.clientY;
-      const t = document.createElement("span");
-      t.className = "tr"; t.textContent = ["✦", "♥", "✿", "✧"][Math.floor(Math.random() * 4)];
-      t.style.cssText = `left:${lx + rand(-6, 6)}px;top:${ly + rand(8, 16)}px;--x:${rand(-18, 18)}px;color:${["#ff6fae", "#ffb347", "#6fd6e8", "#b58cf0"][Math.floor(Math.random() * 4)]}`;
-      document.body.append(t); setTimeout(() => t.remove(), 950);
-    }, { passive: true });
-  }
-  addEventListener("click", e => { if (!e.target.closest("a,button,[data-drag],dialog,.mb,.paper,li")) burst(e.clientX, e.clientY, 5, 150); });
-
   /* ---------- kaydırma: ilerleme çubuğu, arka plan kayması, başa dön ---------- */
   const prog = $("#prog"), up = $("#up");
   let ticking = false;
