@@ -148,6 +148,7 @@
     const ld = $(".ld-t");
     if (ld) ld.innerHTML = [...(lang === "en" ? "loading" : "yükleniyor")].map((c, i) => `<span style="--i:${i}">${c}</span>`).join("");
     $$("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    $$(".lang").forEach(g => { g.dataset.pos = lang; if (!initial && !reduce) { g.classList.remove("sw"); void g.offsetWidth; g.classList.add("sw"); } });
     $$("[data-lang-toggle]").forEach(b => { b.textContent = lang === "en" ? "TR" : "EN"; });
     setHeadings();
     if (builtLang !== lang) buildLetters(!initial);
@@ -157,10 +158,14 @@
     if (l === lang) return;
     lang = l;
     try { localStorage.setItem("lang", l); } catch (e) { /* gizli mod */ }
-    applyLang(false);
+    // destekleyen tarayıcılarda sayfa çapraz geçişle değişir
+    if (document.startViewTransition && !reduce) document.startViewTransition(() => applyLang(false)); else applyLang(false);
   }
   $$("[data-lang]").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
-  $$("[data-lang-toggle]").forEach(b => b.addEventListener("click", () => setLang(lang === "tr" ? "en" : "tr")));
+  $$("[data-lang-toggle]").forEach(b => b.addEventListener("click", () => {
+    if (!reduce) b.animate([{ transform: "rotate(0) scale(1)" }, { transform: "rotate(180deg) scale(.7)" }, { transform: "rotate(360deg) scale(1)" }], { duration: 480, easing: "cubic-bezier(.3,1.5,.5,1)" });
+    setLang(lang === "tr" ? "en" : "tr");
+  }));
 
   // melek kalp: aynı parçadan her yerde
   $$("[data-angel]").forEach(a => {

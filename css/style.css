@@ -632,3 +632,21 @@ h2.in.played:hover .ch{animation:chHop .55s var(--pop);animation-delay:calc(var(
 @media(max-width:560px){nav .wrap{gap:4px;padding:0 6px}nav ul{gap:4px;padding:6px 2px 14px}nav ul a{padding:5px 8px;font-size:12px;outline-offset:-5px}.gh,.lang-btn{width:34px;height:34px;outline-offset:-5px}.gh svg{width:18px;height:18px}.lang-btn{font-size:11px}}
 @media(max-width:560px){nav .wrap{gap:3px;padding:0 4px}nav ul{gap:3px;padding:6px 0 14px;flex:1 1 auto;min-width:0}nav ul a{padding:5px 6px;font-size:11.5px;letter-spacing:-.01em}.gh,.lang-btn{width:32px;height:32px}}
 @media(max-width:340px){nav ul a{padding:5px 4px;font-size:10.5px}}
+
+/* ---------- 29. Dil seçici: kayan gösterge ---------- */
+.lang{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;gap:0;padding:2px}
+.lang::before{
+  content:"";position:absolute;top:2px;bottom:2px;left:2px;width:calc((100% - 4px) / 2);border-radius:99px;
+  background:var(--pk);box-shadow:0 2px 0 #d9468a,0 0 0 1.5px #ffb6d6;
+  translate:0 0;transition:translate .45s cubic-bezier(.3,1.55,.5,1),scale .45s;
+}
+.lang[data-pos="en"]::before{translate:100% 0}
+.lang.sw::before{animation:langsq .45s ease}
+@keyframes langsq{40%{scale:1.18 .8}}
+.lang button{position:relative;z-index:1;min-width:40px;text-align:center}
+.lang button[aria-pressed="true"]{background:transparent;color:#fff;box-shadow:none;text-shadow:0 1px 0 rgba(0,0,0,.2)}
+.lang button:not([aria-pressed="true"]):hover{background:transparent;color:#d9468a}
+.lang button:active{scale:.9}
+/* dil değişince sayfa yumuşakça geçiş yapar */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.35s}
+@media(prefers-reduced-motion:reduce){.lang::before{transition:none}}
