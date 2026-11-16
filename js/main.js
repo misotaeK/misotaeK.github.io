@@ -13,9 +13,9 @@
   try { lang = localStorage.getItem("lang") || lang; } catch (e) { /* gizli mod */ }
   const ROWS = { tr: ["Meraklı", "geliştirici,", "ağ kurucu,", "arayüz sever"], en: ["Curious", "developer,", "network nerd,", "UI lover"] };
   const MSGS = {
-    tr: ["merhaba! ben Su ✿", "web, veritabanı ve ağ işleri yapıyorum", "aynı zamanda illüstratörüm: Photoshop, Clip Studio Paint ✿",
+    tr: ["merhaba! ben Su ✿", "web, veritabanı ve ağ işleri yapıyorum", "şu an Summit Tech'te çalışıyorum ✿", "aynı zamanda illüstratörüm: Photoshop, Clip Studio Paint ✿",
          "buradaki her şeyi tutup sürükleyebilirsin!", "resimlere tıkla, büyüsünler ♥", "projelere göz at ↓", "benimle çalışmak ister misin?"],
-    en: ["hi! I'm Su ✿", "I do web, databases and networks", "I'm also an illustrator: Photoshop, Clip Studio Paint ✿",
+    en: ["hi! I'm Su ✿", "I do web, databases and networks", "I currently work at Summit Tech ✿", "I'm also an illustrator: Photoshop, Clip Studio Paint ✿",
          "you can grab and drag everything here!", "click the pictures, they zoom ♥", "take a look at the projects ↓", "want to work with me?"]
   };
   const HIHI = { tr: ["hihi! ♥", "gıdıklanıyorum!", "selam selam ✿"], en: ["hehe! ♥", "that tickles!", "hi hi ✿"] };
@@ -113,7 +113,7 @@
   // beceriler (illüstrasyon araçları başta)
   const pills = $("#pills");
   if (pills) {
-    const tools = ["Photoshop", "Clip Studio Paint", ["İllüstrasyon", "Illustration"], "C#", "ASP.NET MVC", "Entity Framework", "PHP", "JavaScript", "Python", "Java", "C++",
+    const tools = ["Photoshop", "Clip Studio Paint", ["İllüstrasyon", "Illustration"], "C#", "ASP.NET MVC", "Entity Framework", "PHP", "JavaScript", "React", "Next.js", "Python", "Java", "C++",
       "SQL / PL-SQL", "Oracle", "MS SQL Server", "MySQL", "jQuery", "Bootstrap", "React Native", "Git", "UML", "TCP/IP", "MikroTik", "Cisco Packet Tracer", "CAT6 & Fiber"];
     pills.innerHTML = tools.map(s => Array.isArray(s) ? `<li data-drag data-en="${s[1]}">${s[0]}</li>` : `<li data-drag>${s}</li>`).join("");
   }

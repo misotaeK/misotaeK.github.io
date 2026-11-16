@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800;900&family=Nunito:wght@600;800&family=Titan+One&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=24">
+<link rel="stylesheet" href="css/style.css?v=25">
 </head>
 <body>
 <div id="loader" role="status" aria-label="Yükleniyor" data-en-aria-label="Loading">
@@ -92,7 +92,7 @@
     <div class="about" data-drag>
       <div class="tb"><i></i><i></i><i></i><span data-en="about.txt">hakkımda.txt</span></div>
       <div class="ab">
-        <p data-en="<b>Hi, I'm Çisel Su.</b> I'm a final-year Information Technology student at Eastern Mediterranean University. I build apps with ASP.NET MVC, PHP and SQL and set up network infrastructure in the field. I'm also an illustrator; I draw with tools like Photoshop and Clip Studio Paint."><b>Merhaba, ben Çisel Su.</b> Doğu Akdeniz Üniversitesi Bilgi Teknolojileri son sınıf öğrencisiyim. ASP.NET MVC, PHP ve SQL ile uygulamalar geliştiriyor, sahada ağ altyapısı kuruyorum. Aynı zamanda illüstratörüm; Photoshop ve Clip Studio Paint gibi programlarla çizim yapıyorum.</p>
+        <p data-en="<b>Hi, I'm Çisel Su.</b> I'm a final-year Information Technology student at Eastern Mediterranean University. I build apps with ASP.NET MVC, PHP and SQL and set up network infrastructure in the field. I currently work as a web developer at Summit Tech. I'm also an illustrator; I draw with tools like Photoshop and Clip Studio Paint."><b>Merhaba, ben Çisel Su.</b> Doğu Akdeniz Üniversitesi Bilgi Teknolojileri son sınıf öğrencisiyim. ASP.NET MVC, PHP ve SQL ile uygulamalar geliştiriyor, sahada ağ altyapısı kuruyorum. Şu an Summit Tech'te web geliştirici olarak çalışıyorum. Aynı zamanda illüstratörüm; Photoshop ve Clip Studio Paint gibi programlarla çizim yapıyorum.</p>
         <div class="links"><a class="btn" href="#projeler" data-en="See projects">Projelere bak</a><a class="btn alt" href="mailto:su_kiratli@hotmail.com" data-en="Send an e-mail">E-posta gönder</a></div>
       </div>
     </div>
@@ -191,9 +191,45 @@
   </div>
 </section>
 
+<!-- ===== Çizim ===== -->
+<section id="cizim" aria-labelledby="h-cizim">
+  <h2 id="h-cizim" data-en="Drawing Desk">Çizim Masam</h2>
+  <article class="proj">
+    <div class="pile flat">
+      <div class="shot" data-drag style="--r:-3deg"><img src="img/miso.webp" width="505" height="640" loading="lazy" decoding="async" alt="Kendi çizdiğim tavşan karakter" data-en-alt="The bunny character I drew"></div>
+    </div>
+    <div class="info">
+      <span class="no" data-en="illustration">illüstrasyon</span>
+      <h3><span class="hl2 y" style="--r:-1.2deg" data-en="Illustrator">İllüstratör</span></h3>
+      <ul class="tags"><li>Photoshop</li><li>Clip Studio Paint</li><li data-en="Character design">Karakter tasarımı</li></ul>
+      <div class="txt">
+        <p class="lead" data-en="Besides coding, I make illustrations.">Yazılımın yanında illüstrasyon da yapıyorum.</p>
+        <ul class="pts"><li data-en="I draw with programs like Photoshop and Clip Studio Paint">Çizimlerimi Photoshop ve Clip Studio Paint gibi programlarla yapıyorum</li><li data-en="Character and interface art: the bunny on this site and angelRadio's angel-heart interface are my own drawings">Karakter ve arayüz çizimleri: sitedeki tavşan karakter ve angelRadio'nun melek kalp arayüzü benim çizimim</li><li data-en="I enjoy turning drawings into code; I can design something and build it myself">Çizimi koda dökmeyi seviyorum; tasarımı kendim yapıp kendim kodlayabiliyorum</li></ul>
+      </div>
+    </div>
+  </article>
+</section>
+
 <!-- ===== Deneyim ===== -->
 <section id="deneyim" aria-labelledby="h-deneyim">
   <h2 id="h-deneyim" data-en="Field &amp; Class">Saha ve Sınıf</h2>
+
+  <article class="proj">
+    <div class="pile">
+      <div class="shot" data-drag style="--r:-2deg"><img src="img/sumtech.webp" width="1100" height="596" loading="lazy" decoding="async" alt="sumtech.io ana sayfası" data-en-alt="sumtech.io home page"></div>
+      <div class="shot" data-drag style="--r:4deg;--t:5deg"><img src="img/special.webp" width="1100" height="467" loading="lazy" decoding="async" alt="specialhospitality.com ana sayfası" data-en-alt="specialhospitality.com home page"></div>
+    </div>
+    <div class="info">
+      <span class="no" data-en="Sep 2026 – now">Eyl 2026 – şu an</span>
+      <h3><span class="hl2 b" style="--r:1.2deg">Summit Tech</span></h3>
+      <ul class="tags"><li data-en="Web development">Web geliştirme</li><li>Next.js</li><li>React</li><li>TR/EN</li></ul>
+      <div class="txt">
+        <p class="lead" data-en="I currently work at Summit Tech as a web developer, building the front end of the company site sumtech.io and the Special Hospitality site.">Şu an Summit Tech'te web geliştirici olarak çalışıyorum: şirketin sitesi sumtech.io ile Special Hospitality sitesinin ön yüzünü geliştiriyorum.</p>
+        <ul class="pts"><li data-en="Banners, sections and motion work for the home, about and solutions pages">Ana sayfa, hakkımızda ve çözümler sayfalarının banner, bölüm ve hareket (animasyon) çalışmaları</li><li data-en="A hero section showing SummitOS dashboard screens; the screenshots follow the site language (TR/EN)">SummitOS panel ekranlarını gösteren kahraman bölümü; ekran görüntüleri site diline (TR/EN) göre değişiyor</li><li data-en="Light theme, mobile menu, footer and Lenis smooth scrolling">Açık tema, mobil menü, footer ve Lenis ile yumuşak kaydırma</li><li data-en="Responsive layouts down to 320px phones">320 piksellik küçük telefonlara kadar duyarlı düzenler</li><li data-en="I work with the team through feature branches and pull requests">Ekiple özellik dalları ve pull request'lerle çalışıyorum</li></ul>
+      </div>
+      <div class="links"><a class="btn" href="https://sumtech.io" target="_blank" rel="noopener">sumtech.io</a><a class="btn" href="https://specialhospitality.com" target="_blank" rel="noopener">specialhospitality.com</a></div>
+    </div>
+  </article>
 
   <article class="proj">
     <div class="pile">
@@ -218,6 +254,8 @@
       <h3 data-en="field &amp; class:">saha ve sınıf:</h3>
       <p class="rs1">/çisel su kıratlı/</p>
       <hr><p class="ctr" data-en="date: 2022 – today">tarih: 2022 – bugün</p><hr>
+      <div class="ri"><div data-en="<b>Summit Tech</b><small>web developer · current</small>"><b>Summit Tech</b><small>web geliştirici · şu an</small></div><span data-en="Sep 2026 –">eyl 2026 –</span></div>
+      <p class="rd" data-en="Front end of the sumtech.io and specialhospitality.com sites: page sections, animations, TR/EN language support and responsive layouts.">sumtech.io ve specialhospitality.com sitelerinin ön yüzü: sayfa bölümleri, animasyonlar, TR/EN dil desteği ve duyarlı düzenler.</p>
       <div class="ri"><div data-en="<b>Runtechh</b><small>network infrastructure intern · Antalya</small>"><b>Runtechh</b><small>ağ altyapısı stajyeri · Antalya</small></div><span data-en="Jul–Aug 2025">tem–ağu 2025</span></div>
       <p class="rd" data-en="For 40 working days I worked in the field with the Infrastructure and Network Management team: CAT6 and fiber optic termination, cable testing, active switch installation and relocation, cabinet layout, labeling and inventory. I took part in the Delfin Hotel data/camera infrastructure, AGT Wood Industry fiber infrastructure and McDonald's branch infrastructure projects; I used MikroTik (Winbox) and a fusion splicer.">40 iş günü boyunca Altyapı ve Ağ Yönetimi ekibiyle sahada çalıştım: CAT6 ve fiber optik terminasyon, kablo testi, aktif switch kurulumu ve taşınması, kabin düzeni, etiketleme ve envanter. Delfin Hotel veri/kamera altyapısı, AGT Ağaç Sanayi fiber altyapısı ve McDonald's şube altyapısı projelerinde görev aldım; MikroTik (Winbox) ve fusion splicer kullandım.</p>
       <div class="ri"><div data-en="<b>Eastern Mediterranean University</b><small>Information Technology, bachelor's</small>"><b>Doğu Akdeniz Üniversitesi</b><small>Bilgi Teknolojileri, lisans</small></div><span>2022–2026</span></div>
@@ -267,6 +305,6 @@
 <dialog id="dlg" aria-label="Büyütülmüş görsel" data-en-aria-label="Enlarged image"><img alt=""></dialog>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
-<script src="js/main.js?v=24" defer></script>
+<script src="js/main.js?v=25" defer></script>
 </body>
 </html>
